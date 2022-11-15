@@ -217,6 +217,11 @@ p {
 .nav__link {
   color: var(--clr-neutral-500);
   font-size: 1rem;
+  transition: color 300ms;
+}
+
+.nav__link:hover {
+  color: var(--clr-primary-500);
 }
 
 .menu-toggle {
@@ -282,6 +287,11 @@ p {
   letter-spacing: 4px;
   font-size: var(--fs-button);
   text-transform: uppercase;
+  transition: background-color 400ms;
+}
+
+.main__button:hover {
+  background-color: var(--clr-neutral-500);
 }
 
 .new-list {
@@ -311,6 +321,11 @@ ul.flow > * + * {
   font-size: var(--fs-200);
   margin-bottom: 0.5rem;
   font-weight: var(--fw-bold);
+  transition: color 400ms;
+}
+
+.new-list ul li div h3:hover {
+  color: var(--clr-primary-500);
 }
 
 .new-list ul li div {
@@ -343,6 +358,11 @@ ul.flow > * + * {
   color: var(--clr-neutral-500);
   font-size: 1.125rem;
   font-weight: var(--fw-extra-bold);
+  transition: color 400ms;
+}
+
+.info__box div h3:hover {
+  color: var(--clr-primary-400);
 }
 
 /*------------------ Media queries ------------------*/
