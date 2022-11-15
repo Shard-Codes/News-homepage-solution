@@ -30,8 +30,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Frontend mentor solution link](https://your-solution-url.com)
-- Live Site URL: [Live website link](https://your-live-site-url.com)
+- Solution URL: [Frontend mentor solution link](https://www.frontendmentor.io/challenges/news-homepage-H6SWTa1MFl/hub/news-homepage-solution-made-with-html-css-and-javascript-eMBJn8VUUA)
+- Live Site URL: [Live website link](https://news-homepage-new.netlify.app/)
 
 ## My process
 
