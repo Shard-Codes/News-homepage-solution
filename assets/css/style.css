@@ -1,0 +1,441 @@
+/*------------------ Css custom properties ------------------*/
+:root {
+  /*---------- Colors ----------*/
+  /* Primary */
+  --clr-primary-500: hsl(35, 77%, 62%);
+  --clr-primary-400: hsl(5, 85%, 63%);
+
+  /* Neutral */
+  --clr-neutral-500: hsl(240, 100%, 5%);
+  --clr-neutral-300: hsl(236, 13%, 42%);
+  --clr-neutral-200: hsl(233, 8%, 79%);
+  --clr-neutral-100: hsl(36, 100%, 99%);
+
+  /*---------- Typography ----------*/
+  /* Fonts */
+  --ff-body: "Inter", sans-serif;
+
+  /* Font weights */
+  --fw-extra-bold: 800;
+  --fw-bold: 700;
+  --fw-regular: 400;
+
+  --fw-body: var(--fw-regular);
+  --fw-primary-heading: var(--fw-extra-bold);
+  --fw-secondary-heading: var(--fw-bold);
+  --fw-button: var(--fw-bold);
+
+  /* Font sizes */
+  --fs-500: 2.75rem; /* 44px */
+  --fs-400: 1.75rem; /* 28px */
+  --fs-300: 1.375rem; /* 22px */
+  --fs-200: 1.25rem; /* 20px */
+  --fs-100: 0.938rem; /* 15px */
+
+  --fs-body: var(--fs-100);
+  --fs-primary-heading: var(--fs-500);
+  --fs-secondary-heading: var(--fs-300);
+  --fs-button: var(--fs-100);
+
+  /*---------- Utilities ----------*/
+  /* Line-height */
+  --lh-body: 1.6;
+  --lh-headings: 1.2;
+
+  /* Z-index */
+  --z-biggest: 1000;
+  --z-big: 100;
+  --z-medium: 10;
+  --z-small: 1;
+}
+
+/* Responsive typography */
+@media (min-width: 50em) {
+  :root {
+    /* Font sizes */
+    --fs-500: 3.75rem; /* 60px */
+    --fs-400: 2.125rem; /* 34px */
+  }
+}
+
+/*------------------ Html reset ------------------*/
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+a {
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*------------------ General styling ------------------*/
+body {
+  font-size: var(--fs-body);
+  color: var(--clr-neutral-300);
+  font-family: var(--ff-body);
+  line-height: var(--lh-body);
+  font-weight: var(--fw-body);
+  background-color: var(--clr-neutral-100);
+}
+
+p {
+  max-width: 36ch;
+}
+
+.wrapper {
+  --max-width: 1111px;
+  --spacer: 1rem;
+
+  width: min(var(--max-width), 100% - (1rem * 1.5));
+  margin-inline: auto;
+}
+
+.flow {
+  --flow-space: 1rem;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space);
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+/*------------------ Header ------------------*/
+.header {
+  background-color: transparent;
+  padding-top: 1.75rem;
+  width: 100%;
+  z-index: var(--z-small);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 29px;
+}
+
+.nav__menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 256px;
+  height: 100vh;
+  box-shadow: -100px 0 0 100vmax rgba(0 0 0 / 0);
+  padding: 6.5rem 1.5rem;
+  transition: all 400ms;
+  z-index: var(--z-medium);
+  background-color: var(--clr-neutral-100);
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.nav__link {
+  color: var(--clr-neutral-500);
+  font-size: 1rem;
+}
+
+.menu-toggle {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  z-index: var(--z-big);
+  padding: 0;
+}
+
+.menu-toggle img:nth-child(1) {
+  display: block;
+}
+
+.menu-toggle img:nth-child(2) {
+  display: none;
+}
+
+/*---------- Open-menu class ----------*/
+.nav__menu.Open-menu {
+  right: 0;
+  box-shadow: -100px 0 0 100vmax rgba(0 0 0 / 0.5);
+}
+
+.nav__menu.Open-menu ~ .menu-toggle img:nth-child(1) {
+  display: none;
+}
+
+.nav__menu.Open-menu ~ .menu-toggle img:nth-child(2) {
+  display: block;
+}
+
+/*------------------ Main-section ------------------*/
+.main-section {
+  margin-block: 1.875rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 3.75rem;
+}
+
+.main__data {
+  width: 100%;
+}
+
+.main__data img {
+  margin-bottom: 1.75rem;
+}
+
+.main__title {
+  color: var(--clr-neutral-500);
+  font-size: var(--fs-primary-heading);
+  line-height: var(--lh-headings);
+  font-weight: var(--fw-primary-heading);
+  margin-bottom: 1.5rem;
+}
+
+.main__button {
+  background-color: var(--clr-primary-400);
+  padding: 1rem 2rem;
+  margin-top: 1.5rem;
+  color: var(--clr-neutral-100);
+  font-weight: var(--fw-button);
+  letter-spacing: 4px;
+  font-size: var(--fs-button);
+  text-transform: uppercase;
+}
+
+.new-list {
+  background-color: var(--clr-neutral-500);
+  padding: 1.75rem 1.375rem;
+}
+
+.new-list h2 {
+  color: var(--clr-primary-500);
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-400);
+  margin-bottom: 2.5rem;
+}
+
+ul.flow > * + * {
+  margin-top: var(--flow-space);
+}
+
+.new-list ul li:nth-child(1),
+.new-list ul li:nth-child(2) {
+  border-bottom: 1px solid var(--clr-neutral-200);
+  padding-bottom: 1.875rem;
+}
+
+.new-list ul li div h3 {
+  color: var(--clr-neutral-100);
+  font-size: var(--fs-200);
+  margin-bottom: 0.5rem;
+  font-weight: var(--fw-bold);
+}
+
+.new-list ul li div {
+  color: var(--clr-neutral-300);
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  row-gap: 2.125rem;
+}
+
+.info__box {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.info__box div span {
+  font-size: var(--fs-400);
+  font-weight: var(--fw-bold);
+  color: var(--clr-neutral-200);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.info__box div h3 {
+  color: var(--clr-neutral-500);
+  font-size: 1.125rem;
+  font-weight: var(--fw-extra-bold);
+}
+
+/*------------------ Media queries ------------------*/
+/* 608px wide */
+@media (min-width: 38em) {
+  /*------------------ Main-section ------------------*/
+  .main__data > div {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    width: 100%;
+  }
+}
+
+/* 800px wide */
+@media (min-width: 50em) {
+  .main-section {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.875rem;
+    row-gap: 4.375rem;
+    padding-bottom: 5rem;
+  }
+
+  .main__data > div {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .info-container {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+    gap: 2rem;
+  }
+
+  /*------------------ Header ------------------*/
+  .header {
+    padding-top: 5rem;
+  }
+
+  .nav__menu {
+    position: initial;
+    top: initial;
+    right: initial;
+    width: auto;
+    height: initial;
+    box-shadow: none;
+    padding: 0;
+    transition: none;
+    z-index: initial;
+    background-color: transparent;
+  }
+
+  .nav__list {
+    flex-direction: row;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/* 1104px wide */
+@media (min-width: 69em) {
+  .main-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .main__data {
+    grid-column: 1 / span 2;
+  }
+
+  .main__data > div {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  .main__data > div h1 {
+    flex: 2;
+  }
+
+  .main__data > div div {
+    flex: 2;
+  }
+
+  .info-container {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+    gap: 2rem;
+  }
+}
